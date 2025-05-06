@@ -1,5 +1,8 @@
 import React from 'react';
 import { Search, Play, Newspaper, Radio } from 'lucide-react';
+import Img1 from "../../assets/TreandingImg/Img2.jpg";
+import Img2 from "../../assets/TreandingImg/Img1.jpg";
+import Img3 from "../../assets/TreandingImg/Img3.jpg";
 
 const content = [
   {
@@ -11,6 +14,7 @@ const content = [
     author: 'Tech Visionaries',
     avatarColor: 'bg-purple-700',
     time: '45 min',
+    image: Img1,
   },
   {
     type: 'NEWS',
@@ -21,6 +25,7 @@ const content = [
     author: 'Market Watch',
     avatarColor: 'bg-indigo-700',
     time: '10 min read',
+    image: Img2,
   },
   {
     type: 'LIVE',
@@ -32,12 +37,13 @@ const content = [
     avatarColor: 'bg-pink-700',
     time: 'Live Now',
     live: true,
+    image: Img3,
   },
 ];
 
 export default function TrendingContent() {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gradient-to-br from-gray-950 to-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
@@ -51,7 +57,7 @@ export default function TrendingContent() {
               />
               <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
             </div>
-            <button className="ml-4 text-purple-400 hover:text-purple-300 whitespace-nowrap">
+            <button className="ml-4 text-purple-400 hover:text-purple-300 whitespace-nowrap font-medium">
               View All
             </button>
           </div>
@@ -62,20 +68,29 @@ export default function TrendingContent() {
           {content.map((item, index) => (
             <div
               key={index}
-              className="rounded-xl overflow-hidden bg-black/40 hover:bg-opacity-50 transition-all group"
+              className="rounded-xl overflow-hidden bg-black/50 hover:bg-black/60 backdrop-blur-md transition-all duration-300 group shadow-md"
             >
-              <div className="relative overflow-hidden">
-                <div className={`h-48 ${item.color} transition-transform group-hover:scale-105`} />
+              {/* Image Section */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                />
+                {/* Icon badge */}
                 <div className="absolute bottom-4 left-4 bg-pink-600 rounded-full p-2">
                   {item.icon}
                 </div>
-                <div className="absolute top-4 right-4 bg-black/60 text-white text-xs font-medium px-2 py-1 rounded-md flex items-center">
+                {/* Type label */}
+                <div className="absolute top-4 right-4 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded-md flex items-center">
                   {item.live && (
                     <span className="animate-pulse mr-1 w-2 h-2 bg-red-500 rounded-full"></span>
                   )}
                   {item.type}
                 </div>
               </div>
+
+              {/* Text Content */}
               <div className="p-5">
                 <h3 className="font-bold text-lg mb-2">{item.title}</h3>
                 <p className="text-gray-300 text-sm mb-4">{item.description}</p>

@@ -1,9 +1,20 @@
 import React from 'react';
 import { Mic, Newspaper, Radio, ChevronRight } from 'lucide-react';
+import BgImg from '../../assets/Home/Bg.png'; 
 
 export default function Features() {
   return (
-    <section className="py-20 bg-black/40 backdrop-blur-sm text-white">
+    <section
+      className="pt-20 pb-20 text-white"
+  style={{
+    backgroundImage: `url(${BgImg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',  
+  }}
+>
+
+    
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -16,7 +27,7 @@ export default function Features() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Feature Card */}
           {[
             {
@@ -48,7 +59,9 @@ export default function Features() {
               key={i}
               className={`group bg-gradient-to-br ${from} ${to} p-6 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1 hover:shadow-2xl`}
             >
-              <div className={`w-14 h-14 ${bgIcon} rounded-lg flex items-center justify-center mb-5 transition-transform group-hover:rotate-6`}>
+              <div
+                className={`w-14 h-14 ${bgIcon} rounded-lg flex items-center justify-center mb-5 transition-transform group-hover:rotate-6`}
+              >
                 {icon}
               </div>
               <h3 className="text-xl font-bold mb-2">{title}</h3>
