@@ -1,51 +1,48 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Mic } from 'lucide-react';
 
-export default function Navbar () {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = ['Home', 'Podcasts', 'News', 'Broadcast', 'Community'];
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Podcasts', path: '/podcasts' },
+    { name: 'News', path: '/news' },
+    { name: 'Broadcast', path: '/broadcast' },
+    { name: 'Community', path: '/community' },
+  ];
 
   return (
-    <header className="bg-black/30 backdrop-blur-md fixed w-full z-20 shadow-md">
+    <header className="bg-gradient-to-r from-pink-600 to-purple-800 fixed w-full z-20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Mic className="text-pink-500" size={28} />
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500">
+            <Mic className="text-white transform transition-all hover:scale-110" size={30} />
+            <span className="text-2xl font-extrabold bg-clip-text text-white">
               Insight24
             </span>
           </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex space-x-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-white hover:text-pink-400 transition duration-200 font-medium"
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-white hover:text-pink-400 transition duration-300 font-medium text-lg transform hover:scale-105"
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </nav>
-
-          {/* Buttons */}
-          <div className="hidden md:flex space-x-4">
-            <button className="px-4 py-2 rounded-md bg-purple-700 hover:bg-purple-800 text-sm font-medium">
-              Sign In
-            </button>
-            <button className="px-4 py-2 rounded-md bg-gradient-to-r from-pink-500 to-purple-600 text-sm font-medium">
-              Get Started
-            </button>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white focus:outline-none"
+              className="text-white focus:outline-none transform hover:scale-110 transition-all"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -53,30 +50,23 @@ export default function Navbar () {
         </div>
       </div>
 
-      {/* Mobile Nav */}
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-        } bg-black/80 backdrop-blur-md`}
-      >
-        <div className="flex flex-col px-4 pt-4 pb-6 space-y-3">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-white hover:text-pink-400 transition font-medium"
-            >
-              {link}
-            </a>
-          ))}
-          <button className="mt-4 w-full bg-purple-700 hover:bg-purple-800 px-4 py-2 rounded-md text-sm font-medium">
-            Sign In
-          </button>
-          <button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 px-4 py-2 rounded-md text-sm font-medium">
-            Get Started
-          </button>
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden px-4 pb-4">
+          <nav className="flex flex-col space-y-2 mt-2 bg-pink-700 rounded-lg shadow-md p-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-white hover:text-yellow-300 transition duration-300 font-medium text-lg"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
-      </div>
+      )}
     </header>
   );
 }

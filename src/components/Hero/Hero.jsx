@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowRight, ChevronRight, Mic, Newspaper, Radio } from 'lucide-react';
-import BgImg from "../../assets/Home/Bg.png";
+import BgImg from "../../assets/PodcastImg/podcastImg.jpg";
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20 text-white" style={{ backgroundImage: `url(${BgImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', opacity: 0.85 }}>
+    <section className="pt-62 pb-20 text-white" style={{ backgroundImage: `url(${BgImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', opacity: 0.85 }}>
       <div className="bg-gradient-to-br from-indigo-950 to-purple-900 text-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-12">

@@ -2,9 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black bg-opacity-70 text-gray-300">
+    <footer className="bg-gradient-to-t from-black via-gray-900 to-black text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+        {/* Grid Sections */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {[
             {
               title: "Platform",
@@ -24,11 +25,16 @@ const Footer = () => {
             },
           ].map((section) => (
             <div key={section.title}>
-              <h3 className="text-lg font-semibold mb-4 text-white">{section.title}</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">
+                {section.title}
+              </h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="hover:text-white transition-colors duration-200">
+                    <a
+                      href="#"
+                      className="hover:text-pink-400 transition duration-200 block"
+                    >
                       {link}
                     </a>
                   </li>
@@ -38,20 +44,32 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+        {/* Logo and Social Icons */}
+        <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Logo */}
+          <div className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500 tracking-wide">
             Insight24
           </div>
 
-          <div className="flex space-x-6">
+          {/* Social Icons */}
+          <div className="flex space-x-5">
             {[
               { name: "Facebook", href: "#", iconPath: "M22.675 0h-21.35..." },
               { name: "Twitter", href: "#", iconPath: "M23.954 4.569c-.885..." },
               { name: "GitHub", href: "#", iconPath: "M12 0c-6.626..." },
               { name: "LinkedIn", href: "#", iconPath: "M12.017 0c-6.621..." },
             ].map((social, index) => (
-              <a key={index} href={social.href} className="hover:text-white" aria-label={social.name}>
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <a
+                key={index}
+                href={social.href}
+                className="text-gray-400 hover:text-pink-400 transition duration-300"
+                aria-label={social.name}
+              >
+                <svg
+                  className="w-6 h-6 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path d={social.iconPath} />
                 </svg>
               </a>
@@ -59,8 +77,9 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Bottom Text */}
         <div className="mt-8 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Insight24. All rights reserved.
+          © {new Date().getFullYear()} <span className="text-white font-medium">Insight24</span>. All rights reserved.
         </div>
       </div>
     </footer>
