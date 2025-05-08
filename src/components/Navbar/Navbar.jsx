@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, Mic } from 'lucide-react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import logo from "../../assets/logo/logo.jpg";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Podcasts', path: '/podcasts' },
-    { name: 'News', path: '/news' },
-    { name: 'Broadcast', path: '/broadcast' },
-    { name: 'Community', path: '/community' },
+    { name: "Home", path: "/" },
+    { name: "Podcasts", path: "/podcasts" },
+    { name: "News", path: "/news" },
+    { name: "Broadcast", path: "/broadcast" },
+    { name: "Community", path: "/community" },
   ];
 
   return (
-    <header className="bg-gradient-to-r from-pink-600 to-purple-800 fixed w-full z-20 shadow-lg">
+    <header className="bg-white fixed w-full z-20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <Mic className="text-white transform transition-all hover:scale-110" size={30} />
-            <span className="text-2xl font-extrabold bg-clip-text text-white">
-              Insight24
-            </span>
-          </div>
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src={logo}
+              alt="Insight24 Logo"
+              className="w-20 h-20 object-contain transform transition-all hover:scale-110"
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -31,7 +33,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-white hover:text-pink-400 transition duration-300 font-medium text-lg transform hover:scale-105"
+                className="text-black hover:text-purple-600 transition duration-300 font-medium text-lg transform hover:scale-105"
               >
                 {link.name}
               </Link>
@@ -42,7 +44,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white focus:outline-none transform hover:scale-110 transition-all"
+              className="text-black focus:outline-none transform hover:scale-110 transition-all"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -53,13 +55,13 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden px-4 pb-4">
-          <nav className="flex flex-col space-y-2 mt-2 bg-pink-700 rounded-lg shadow-md p-4">
+          <nav className="flex flex-col space-y-2 mt-2 bg-gray-100 rounded-lg shadow-md p-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-white hover:text-yellow-300 transition duration-300 font-medium text-lg"
+                className="text-black hover:text-purple-600 transition duration-300 font-medium text-lg"
               >
                 {link.name}
               </Link>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo/logo.jpg"
 
 const Footer = () => {
   return (
@@ -9,7 +11,12 @@ const Footer = () => {
           {[
             {
               title: "Platform",
-              links: ["Podcasting", "News Publishing", "Live Broadcasting", "Analytics"],
+              links: [
+                "Podcasting",
+                "News Publishing",
+                "Live Broadcasting",
+                "Analytics",
+              ],
             },
             {
               title: "Resources",
@@ -21,7 +28,12 @@ const Footer = () => {
             },
             {
               title: "Legal",
-              links: ["Terms of Service", "Privacy Policy", "Cookie Policy", "GDPR Compliance"],
+              links: [
+                "Terms of Service",
+                "Privacy Policy",
+                "Cookie Policy",
+                "GDPR Compliance",
+              ],
             },
           ].map((section) => (
             <div key={section.title}>
@@ -47,15 +59,23 @@ const Footer = () => {
         {/* Logo and Social Icons */}
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo */}
-          <div className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500 tracking-wide">
-            Insight24
-          </div>
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src={logo}
+              alt="Insight24 Logo"
+              className="w-20 h-20 object-contain transform transition-all hover:scale-110"
+            />
+          </Link>
 
           {/* Social Icons */}
           <div className="flex space-x-5">
             {[
               { name: "Facebook", href: "#", iconPath: "M22.675 0h-21.35..." },
-              { name: "Twitter", href: "#", iconPath: "M23.954 4.569c-.885..." },
+              {
+                name: "Twitter",
+                href: "#",
+                iconPath: "M23.954 4.569c-.885...",
+              },
               { name: "GitHub", href: "#", iconPath: "M12 0c-6.626..." },
               { name: "LinkedIn", href: "#", iconPath: "M12.017 0c-6.621..." },
             ].map((social, index) => (
@@ -79,7 +99,9 @@ const Footer = () => {
 
         {/* Bottom Text */}
         <div className="mt-8 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} <span className="text-white font-medium">Insight24</span>. All rights reserved.
+          © {new Date().getFullYear()}{" "}
+          <span className="text-white font-medium">Insight24</span>. All rights
+          reserved.
         </div>
       </div>
     </footer>
