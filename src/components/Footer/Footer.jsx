@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo/logo.jpg"
+import logo from "../../assets/logo/logo.jpg";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-t from-black via-gray-900 to-black text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Grid Sections */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {[
             {
@@ -67,37 +67,29 @@ const Footer = () => {
             />
           </Link>
 
-          {/* Social Icons */}
           <div className="flex space-x-5">
-            {[
-              { name: "Facebook", href: "#", iconPath: "M22.675 0h-21.35..." },
-              {
-                name: "Twitter",
-                href: "#",
-                iconPath: "M23.954 4.569c-.885...",
-              },
-              { name: "GitHub", href: "#", iconPath: "M12 0c-6.626..." },
-              { name: "LinkedIn", href: "#", iconPath: "M12.017 0c-6.621..." },
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                className="text-gray-400 hover:text-pink-400 transition duration-300"
-                aria-label={social.name}
-              >
-                <svg
-                  className="w-6 h-6 fill-current"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d={social.iconPath} />
-                </svg>
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/insight_24_"
+              className="text-pink-400 hover:text-pink-500 transition duration-300"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="w-6 h-6" />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@insight24talks"
+              className="text-red-400 hover:text-pink-500 transition duration-300"
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaYoutube className="w-6 h-6" />
+            </a>
           </div>
         </div>
 
-        {/* Bottom Text */}
         <div className="mt-8 text-center text-sm text-gray-500">
           © {new Date().getFullYear()}{" "}
           <span className="text-white font-medium">Insight24</span>. All rights
