@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ChevronRight, Mic, Newspaper, Radio } from 'lucide-react';
-import BgImg from "../../assets/PodcastImg/podcastImg.jpg";
+import BgImg from "../../assets/PodcastImg/PodcastImg.jpg";
 
 export default function Hero() {
   return (
